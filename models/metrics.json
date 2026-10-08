@@ -1,0 +1,47 @@
+{
+  "data_kind": "synthetic only unless a user-provided dataset was supplied",
+  "target": "on_treatment_gph - baseline_gph <= -10",
+  "n_total": 1252,
+  "n_train": 1001,
+  "n_test": 251,
+  "prevalence": 0.3506,
+  "cv_auroc_mean": {
+    "logistic": 0.6833,
+    "random_forest": 0.6596
+  },
+  "selected_model": "logistic",
+  "test": {
+    "auroc": 0.7514,
+    "average_precision": 0.5962,
+    "brier": 0.1916,
+    "sensitivity_at_0_5": 0.375,
+    "specificity_at_0_5": 0.8834,
+    "confusion_matrix": [
+      [
+        144,
+        19
+      ],
+      [
+        55,
+        33
+      ]
+    ]
+  },
+  "dummy_test": {
+    "auroc": 0.5,
+    "average_precision": 0.3506,
+    "brier": 0.2277,
+    "sensitivity_at_0_5": 0.0,
+    "specificity_at_0_5": 1.0,
+    "confusion_matrix": [
+      [
+        163,
+        0
+      ],
+      [
+        88,
+        0
+      ]
+    ]
+  }
+}

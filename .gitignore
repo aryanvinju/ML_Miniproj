@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+.codex-finalizer/
+.pytest_tmp/
+slides/.build/
+slides/node_modules/
+report/preview-*.png
+data/*.csv
+models/*.joblib
