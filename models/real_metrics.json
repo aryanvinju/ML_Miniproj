@@ -1,0 +1,55 @@
+{
+  "dataset": "Carmona-Bayonas et al. (2021), Figshare 10.6084/m9.figshare.14681274",
+  "data_kind": "real de-identified observational cohort",
+  "questionnaire": "EORTC QLQ-C30 global health status (0-100)",
+  "target": "HE_end - HE_baseline <= -10 after adjuvant chemotherapy",
+  "n_source": 339,
+  "n_paired": 217,
+  "n_train": 173,
+  "n_test": 44,
+  "prevalence": 0.3594,
+  "test_prevalence": 0.3636,
+  "cv_auroc_mean": {
+    "logistic": 0.7884,
+    "random_forest": 0.7696
+  },
+  "selected_model": "logistic",
+  "test": {
+    "auroc": 0.7422,
+    "average_precision": 0.6359,
+    "brier": 0.1914,
+    "sensitivity_at_0_5": 0.4375,
+    "specificity_at_0_5": 0.8571,
+    "confusion_matrix": [
+      [
+        24,
+        4
+      ],
+      [
+        9,
+        7
+      ]
+    ]
+  },
+  "test_auroc_bootstrap_95ci": [
+    0.5738,
+    0.8802
+  ],
+  "dummy_test": {
+    "auroc": 0.5,
+    "average_precision": 0.3636,
+    "brier": 0.2314,
+    "sensitivity_at_0_5": 0.0,
+    "specificity_at_0_5": 1.0,
+    "confusion_matrix": [
+      [
+        28,
+        0
+      ],
+      [
+        16,
+        0
+      ]
+    ]
+  }
+}

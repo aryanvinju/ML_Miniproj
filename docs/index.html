@@ -1,63 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#102a43">
-  <title>PROMIS GPH decline | Educational demo</title>
+  <title>Real-data quality-of-life decline | ML demo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="masthead">
-    <div class="brand"><span class="mark">P</span><span>PROMIS decline lab</span></div>
-    <span class="tag">Synthetic data demo</span>
-  </header>
+  <header class="masthead"><div class="brand"><span class="mark">Q</span><span>Quality-of-life lab</span></div><span class="tag">Public research data</span></header>
   <main>
     <section class="intro">
-      <div>
-        <p class="eyebrow">MACHINE LEARNING MINI PROJECT</p>
-        <h1>Predicting a decline in physical health during chemotherapy</h1>
-        <p class="lede">Explore how pre-treatment inputs affect a model trained on fictional patients. The target is a drop of at least 10 points in PROMIS Global Physical Health (GPH).</p>
-      </div>
-      <aside class="study-note">
-        <strong>Study context</strong>
-        <p>Inspired by Ostberg & Peterson (2020). Their Stanford patient data is restricted; this model uses a reproducible synthetic cohort.</p>
-        <a href="https://cs229.stanford.edu/proj2020spr/report/Ostberg_Peterson.pdf" target="_blank" rel="noopener">Read the source paper ↗</a>
-      </aside>
+      <div><p class="eyebrow">MACHINE LEARNING MINI PROJECT</p><h1>Predicting quality-of-life decline after chemotherapy</h1><p class="lede">Explore a model trained on a real public breast cancer cohort. Its target is a decrease of at least 10 points in EORTC QLQ-C30 global health status from before chemotherapy to treatment completion.</p></div>
+      <aside class="study-note"><strong>About the data</strong><p>217 patients had both questionnaires. This is a small, single-study sample; the estimate is exploratory.</p><a href="https://doi.org/10.6084/m9.figshare.14681274" target="_blank" rel="noopener">View the source dataset ↗</a></aside>
     </section>
     <div class="workspace">
       <section class="inputs" aria-labelledby="inputs-heading">
-        <div class="section-head"><div><p class="eyebrow">01 / PRE-TREATMENT PROFILE</p><h2 id="inputs-heading">Patient inputs</h2></div><button id="reset" type="button">Reset example</button></div>
-        <form id="predict-form">
-          <div class="grid">
-            <label>Age <span>years</span><input name="age" type="number" min="18" max="100" step="1" value="60" required></label>
-            <label>Baseline GPH <span>T-score</span><input name="baseline_gph" type="number" min="10" max="80" step="0.1" value="48" required></label>
-            <label>Baseline GMH <span>T-score</span><input name="baseline_gmh" type="number" min="10" max="80" step="0.1" value="49" required></label>
-            <label>Comorbidities <span>count</span><input name="comorbidity_count" type="number" min="0" max="20" step="1" value="2" required></label>
-            <label>ED visits <span>prior 6 months</span><input name="ed_visits_6m" type="number" min="0" max="20" step="1" value="0" required></label>
-            <label>Hospitalizations <span>prior 6 months</span><input name="hospitalizations_6m" type="number" min="0" max="10" step="1" value="0" required></label>
-            <label>Hemoglobin <span>g/dL</span><input name="hemoglobin_g_dl" type="number" min="4" max="22" step="0.1" value="12.5" required></label>
-            <label>Albumin <span>g/dL</span><input name="albumin_g_dl" type="number" min="1" max="6" step="0.1" value="4" required></label>
-            <label>BMI <span>kg/m²</span><input name="bmi" type="number" min="10" max="60" step="0.1" value="27" required></label>
-            <label>Cancer stage <span>at baseline</span><select name="cancer_stage"><option>I</option><option selected>II</option><option>III</option><option>IV</option></select></label>
-            <label>Treatment goal <span>at baseline</span><select name="treatment_goal"><option selected>curative</option><option>palliative</option></select></label>
-          </div>
-          <button class="primary" type="submit">Update prediction <span aria-hidden="true">→</span></button>
-        </form>
+        <div class="section-head"><div><p class="eyebrow">01 / PRE-CHEMOTHERAPY PROFILE</p><h2 id="inputs-heading">Baseline inputs</h2></div><button id="reset" type="button">Reset example</button></div>
+        <p class="form-note">Enter hypothetical scores from 0 to 100. Higher functioning scores mean better functioning; higher symptom scores mean more symptoms.</p>
+        <form id="predict-form"><div class="grid">
+          <label>Global health <span>0–100</span><input name="HE_baseline" type="number" min="0" max="100" step="0.1" value="66.7" required></label>
+          <label>Physical functioning <span>0–100</span><input name="PH_baseline" type="number" min="0" max="100" step="0.1" value="86.7" required></label>
+          <label>Role functioning <span>0–100</span><input name="RO_baseline" type="number" min="0" max="100" step="0.1" value="83.3" required></label>
+          <label>Emotional functioning <span>0–100</span><input name="EF_baseline" type="number" min="0" max="100" step="0.1" value="75" required></label>
+          <label>Cognitive functioning <span>0–100</span><input name="COG_baseline" type="number" min="0" max="100" step="0.1" value="83.3" required></label>
+          <label>Social functioning <span>0–100</span><input name="SO_baseline" type="number" min="0" max="100" step="0.1" value="83.3" required></label>
+          <label>Fatigue <span>0–100</span><input name="FA_baseline" type="number" min="0" max="100" step="0.1" value="22.2" required></label>
+          <label>Nausea/vomiting <span>0–100</span><input name="Nau_baseline" type="number" min="0" max="100" step="0.1" value="0" required></label>
+          <label>Pain <span>0–100</span><input name="PA_baseline" type="number" min="0" max="100" step="0.1" value="16.7" required></label>
+          <label>Surgery <span>before chemotherapy</span><select name="Surgery"><option selected>BCS</option><option>Mastectomy</option></select></label>
+        </div><button class="primary" type="submit">Update prediction <span aria-hidden="true">→</span></button></form>
       </section>
       <section class="result" aria-labelledby="result-heading">
-        <p class="eyebrow">02 / MODEL OUTPUT</p>
-        <h2 id="result-heading">Illustrative probability</h2>
+        <p class="eyebrow">02 / MODEL OUTPUT</p><h2 id="result-heading">Exploratory probability</h2>
         <div class="number"><span id="probability">—</span><span class="percent">%</span></div>
-        <div class="meter"><div id="meter-fill"></div></div>
-        <div class="meter-labels"><span>0%</span><span>50% decision threshold</span><span>100%</span></div>
+        <div class="meter"><div id="meter-fill"></div></div><div class="meter-labels"><span>0%</span><span>50% demo threshold</span><span>100%</span></div>
         <p id="classification" class="classification" aria-live="polite">Loading model…</p>
-        <p class="result-copy">This number comes from logistic regression fitted to fictional records. It is useful for demonstrating the pipeline, not for estimating a real patient's risk.</p>
-        <div class="explain"><h3>What changes the output?</h3><p>Adjust one input, then update the prediction. The model combines standardized numeric inputs and one-hot encoded categories into a weighted sum, then applies a sigmoid function.</p></div>
+        <p class="result-copy">This logistic model was trained on 173 people and tested on 44. Its held-out AUROC was 0.7422 (bootstrap 95% interval 0.5738–0.8802). The number is not a validated individual risk estimate.</p>
+        <div class="explain"><h3>What changes the output?</h3><p>Adjust one baseline score, then update the prediction. The model combines standardized scores and surgery type, then applies a logistic function.</p></div>
       </section>
     </div>
-    <footer><strong>Educational use only.</strong> No real patient data is loaded or sent. Not a medical device or clinical decision tool. <a href="https://github.com/aryanvinju/ML_Miniproj">Source repository ↗</a></footer>
-  </main>
-  <script src="app.js"></script>
-</body>
-</html>
+    <footer><strong>Research demonstration only.</strong> Do not use for patient care. Your inputs stay in this browser. This EORTC outcome differs from the Stanford PROMIS study. <a href="https://github.com/aryanvinju/ML_Miniproj">Source repository ↗</a></footer>
+  </main><script src="app.js"></script>
+</body></html>
