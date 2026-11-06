@@ -140,6 +140,7 @@ def main():
     parser.add_argument("--demo-model", type=Path, default=Path("docs/model.json"))
     args = parser.parse_args()
     print(json.dumps(train(args.data, args.output, args.demo_model), indent=2))
+    print("helloworld")
 
 
 if __name__ == "__main__":
